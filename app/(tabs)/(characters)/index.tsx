@@ -14,6 +14,8 @@ import {
   Selector,
   ThemedView,
 } from "@components/index";
+// Constants
+import { getGenderOptions, getSpeciesOptions, getStatusOptions } from "@constants/CharacterFilters";
 // Styles
 import { styles } from "./styles";
 
@@ -32,27 +34,9 @@ export default function CharactersScreen() {
   const { t } = useTranslation();
   const iconColor = useThemeColor({}, "text");
 
-  const statusOptions = [
-    { label: t("filters.status.all"), value: "All" },
-    { label: t("filters.status.alive"), value: "Alive" },
-    { label: t("filters.status.dead"), value: "Dead" },
-    { label: t("filters.status.unknown"), value: "unknown" },
-  ];
-
-  const speciesOptions = [
-    { label: t("filters.species.all"), value: "All" },
-    { label: t("filters.species.human"), value: "Human" },
-    { label: t("filters.species.alien"), value: "Alien" },
-    { label: t("filters.species.robot"), value: "Robot" },
-    { label: t("filters.species.unknown"), value: "unknown" },
-  ];
-  const genderOptions = [
-    { label: t("filters.gender.all"), value: "All" },
-    { label: t("filters.gender.female"), value: "Female" },
-    { label: t("filters.gender.male"), value: "Male" },
-    { label: t("filters.gender.genderless"), value: "Genderless" },
-    { label: t("filters.gender.unknown"), value: "unknown" },
-  ];
+  const statusOptions = getStatusOptions(t);
+  const speciesOptions = getSpeciesOptions(t);
+  const genderOptions = getGenderOptions(t);
 
   return (
     <ThemedView style={styles.container}>
