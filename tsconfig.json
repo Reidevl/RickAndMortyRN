@@ -5,8 +5,8 @@
     "paths": {
       "@/*": ["./*"],
       "@core/*": ["./src/core/*"],
-      "@domain/*": ["./src/core/domain"],
-      "@data/*": ["./src/core/data"],
+      "@domain/*": ["./src/core/domain/*"],
+      "@data/*": ["./src/core/data/*"],
       "@presentation/*": ["./src/core/presentation/*"],
       "@shared/*": ["./src/shared/*"],
       "@entities/*": ["./src/core/domain/entities/*"],
