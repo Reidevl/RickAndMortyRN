@@ -18,6 +18,8 @@ const MAPPING = {
   'list.bullet': 'list',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
+  'magnifyingglass': 'search',
+  'person.crop.circle.badge.xmark': 'person-off',
 } as IconMapping;
 
 /**
