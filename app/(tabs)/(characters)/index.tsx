@@ -12,6 +12,7 @@ import {
   NotFoundSearchResult,
   SearchInput,
   Selector,
+  SortingButton,
   ThemedView,
 } from "@components/index";
 // Constants
@@ -28,11 +29,13 @@ export default function CharactersScreen() {
     characters,
     filters,
     loading,
+    sort,
     setName,
     setStatus,
     setSpecies,
     setGender,
     setPage,
+    setSort,
     totalPages,
   } = useCharacters();
   const { name, status, species, gender } = filters;
@@ -52,6 +55,7 @@ export default function CharactersScreen() {
         placeholder={t("characters.search")}
       />
       <View style={styles.filtersRow}>
+        <SortingButton sort={sort} setSort={setSort} />
         <Selector
           label={t("characters.status")}
           value={status || ""}

@@ -20,6 +20,9 @@ const translations = {
       origin: "Origin",
       location: "Location",
       noCharactersFound: "No characters found.",
+      sortedNormal: "Normal",
+      sortedAZ: "A-Z",
+      sortedZA: "Z-A",
     },
     filters: {
       status: {
@@ -41,6 +44,10 @@ const translations = {
         alien: "Alien",
         robot: "Robot",
         unknown: "Unknown",
+      },
+      sorted: {
+        az: "A-Z",
+        za: "Z-A",
       },
     },
     episodes: {
@@ -68,6 +75,9 @@ const translations = {
       origin: "Origen",
       location: "Ubicación",
       noCharactersFound: "No se encontraron personajes.",
+      sortedNormal: "Normal",
+      sortedAZ: "A-Z",
+      sortedZA: "Z-A",
     },
     filters: {
       status: {
@@ -89,6 +99,10 @@ const translations = {
         alien: "Alienígena",
         robot: "Robot",
         unknown: "Desconocido",
+      },
+      sorted: {
+        az: "A-Z",
+        za: "Z-A",
       },
     },
     episodes: {

@@ -2,6 +2,7 @@ export * from "./characters";
 export * from "./loading";
 export * from "./paginator";
 export * from "./Selector";
+export * from "./sorting-button";
 export * from "./ui";
 
 export { Collapsible } from "./Collapsible";

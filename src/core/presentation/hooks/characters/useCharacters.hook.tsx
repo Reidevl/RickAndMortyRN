@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 // Data
 import { CharacterRepositoryImpl } from "@data/repositories/CharacterRepositoryImpl";
 // Domain
@@ -24,6 +24,7 @@ export function useCharacters() {
   const [error, setError] = useState<Error | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [sort, setSort] = useState<"normal" | "az" | "za">("normal");
 
   const fetchCharacters = useCallback(async () => {
     setLoading(true);
@@ -67,9 +68,12 @@ export function useCharacters() {
     []
   );
   const setSpecies = useCallback(
-    (species: string) => setFilters((f) => ({ ...f, 
-      species: species === "All" ? undefined: (species as CharacterSpecies)
-      , page: 1 })),
+    (species: string) =>
+      setFilters((f) => ({
+        ...f,
+        species: species === "All" ? undefined : (species as CharacterSpecies),
+        page: 1,
+      })),
     []
   );
   const setGender = useCallback(
@@ -86,17 +90,33 @@ export function useCharacters() {
     []
   );
 
+  // MARK: - Sort
+  const sortedCharacters = useMemo(() => {
+    if (sort === "az") {
+      return [...characters].sort((a, b) => a.name.localeCompare(b.name));
+    }
+    if (sort === "za") {
+      return [...characters].sort((a, b) => b.name.localeCompare(a.name));
+    }
+    if (sort === "normal") {
+      return characters;
+    }
+    return characters;
+  }, [characters, sort]);
+
   return {
-    characters,
+    characters: sortedCharacters,
     totalPages,
     loading,
     error,
     filters,
+    sort,
     setName,
     setStatus,
     setSpecies,
     setGender,
     setPage,
+    setSort,
     refetch: fetchCharacters,
   };
 }

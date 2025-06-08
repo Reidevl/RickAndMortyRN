@@ -26,3 +26,10 @@ export function getGenderOptions(t: (key: string) => string) {
     { label: t("filters.gender.unknown"), value: "unknown" },
   ];
 }
+
+export function getSortedNames(t: (key: string) => string) {
+  return [
+    { label: t("filters.sorted.az"), value: "az" },
+    { label: t("filters.sorted.za"), value: "za" },
+  ];
+}
