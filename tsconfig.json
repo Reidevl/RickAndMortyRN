@@ -17,6 +17,7 @@
       "@hooks/*": ["./src/core/presentation/hooks/*"],
       "@view-models/*": ["./src/core/presentation/view-models/*"],
       "@utils/*": ["./src/shared/utils/*"],
+      "@styles/*": ["./src/core/presentation/styles/*"],
       "@constants/*": ["./src/shared/constants/*"],
       "@i18n/*": ["./src/shared/i18n/*"],
       "@theme/*": ["./src/shared/theme/*"]

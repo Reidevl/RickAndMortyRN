@@ -1,5 +1,6 @@
 export * from "./characters";
 export * from "./loading";
+export * from "./paginator";
 export * from "./Selector";
 export * from "./ui";
 

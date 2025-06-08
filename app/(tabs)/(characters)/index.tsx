@@ -1,12 +1,12 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { View } from "react-native";
 // Hooks
 import { useCharacters } from "@hooks/characters";
 import { useThemeColor } from "@hooks/useThemeColor";
 import useTranslation from "@hooks/useTranslation";
 // Components
 import {
-  CharacterCard,
+  CharacterList,
   IconSymbol,
   Loading,
   NotFoundSearchResult,
@@ -15,9 +15,13 @@ import {
   ThemedView,
 } from "@components/index";
 // Constants
-import { getGenderOptions, getSpeciesOptions, getStatusOptions } from "@constants/CharacterFilters";
+import {
+  getGenderOptions,
+  getSpeciesOptions,
+  getStatusOptions,
+} from "@constants/CharacterFilters";
 // Styles
-import { styles } from "./styles";
+import { styles } from "@styles/characters/styles";
 
 export default function CharactersScreen() {
   const {
@@ -29,6 +33,7 @@ export default function CharactersScreen() {
     setSpecies,
     setGender,
     setPage,
+    totalPages,
   } = useCharacters();
   const { name, status, species, gender } = filters;
   const { t } = useTranslation();
@@ -83,19 +88,11 @@ export default function CharactersScreen() {
         />
       ) : (
         // Character list
-        <FlatList
-          data={characters}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-          renderItem={({ item }) => (
-            <CharacterCard
-              name={item.name}
-              image={item.image}
-              species={item.species}
-            />
-          )}
-          contentContainerStyle={styles.grid}
-          showsVerticalScrollIndicator={false}
+        <CharacterList
+          characters={characters}
+          page={filters.page || 1}
+          totalPages={totalPages}
+          onPageChange={setPage}
         />
       )}
     </ThemedView>

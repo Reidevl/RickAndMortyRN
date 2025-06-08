@@ -20,7 +20,11 @@ const MAPPING = {
   'chevron.right': 'chevron-right',
   'magnifyingglass': 'search',
   'person.crop.circle.badge.xmark': 'person-off',
+  'backward.end.fill': 'first-page',
+  'chevron.left': 'chevron-left',
+  'forward.end.fill': 'last-page',
 } as IconMapping;
+
 
 /**
  * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.

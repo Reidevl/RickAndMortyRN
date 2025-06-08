@@ -25,7 +25,4 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
     justifyContent: 'flex-start',
   },
-  grid: {
-    paddingBottom: 24,
-  },
 });
