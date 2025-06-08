@@ -20,6 +20,7 @@ export class CharacterRepositoryImpl implements CharacterRepository {
           name: filters?.name,
           status: filters?.status,
           species: filters?.species,
+          gender: filters?.gender,
         },
       },
     });

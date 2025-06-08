@@ -1,5 +1,5 @@
-export type CharacterStatus = 'Alive' | 'Dead' | 'unknown';
-export type CharacterGender = 'Female' | 'Male' | 'Genderless' | 'unknown';
+export type CharacterStatus = "All" | "Alive" | "Dead" | "unknown";
+export type CharacterGender = "All" | "Female" | "Male" | "Genderless" | "unknown";
 
 export interface Location {
   id: string;
@@ -34,4 +34,20 @@ export interface CharacterFilters {
   status?: CharacterStatus;
   species?: string;
   page?: number;
-} 
+  gender?: CharacterGender;
+}
+
+export const CHARACTER_STATUS_OPTIONS: CharacterStatus[] = [
+  "All",
+  "Alive",
+  "Dead",
+  "unknown",
+];
+
+export const CHARACTER_GENDER_OPTIONS: CharacterGender[] = [
+  "All",
+  "Female",
+  "Male",
+  "Genderless",
+  "unknown",
+];

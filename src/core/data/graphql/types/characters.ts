@@ -20,6 +20,7 @@ export interface CharactersVariables {
     name?: string;
     status?: Character['status'];
     species?: string;
+    gender?: Character['gender'];
   };
 }
 
