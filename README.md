@@ -1,50 +1,126 @@
-# Welcome to your Expo app 👋
+# Rick and Morty App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native application built with Expo that follows Clean Architecture principles to consume the Rick and Morty GraphQL API.
 
-## Get started
+## Project Structure
 
-1. Install dependencies
+```
+app/                     # Expo Router directory (handles routing)
+├── (tabs)/              # Tab navigation
+│   ├── characters/      # Characters tab
+│   │   ├── [id].tsx     # Character detail screen
+│   │   └── index.tsx    # Characters list screen
+│   └── episodes/        # Episodes tab
+│       ├── [id].tsx     # Episode detail screen
+│       └── index.tsx    # Episodes list screen
+├── _layout.tsx          # Root layout
+└── +not-found.tsx       # 404 screen
 
+src/                     # Application source code
+├── core/                # Core business logic (Clean Architecture)
+│   ├── domain/          # Domain layer
+│   │   ├── entities/    # Business entities (Character, Episode, etc.)
+│   │   ├── repositories/   # Repository interfaces
+│   │   └── use-cases/      # Business use cases
+│   │
+│   ├── data/          # Data layer
+│   │   ├── graphql/        # GraphQL queries, mutations, and types
+│   │   ├── repositories/   # Repository implementations
+│   │   └── sources/        # Data sources (API clients)
+│   │
+│   └── presentation/       # Presentation layer
+│       ├── components/     # Reusable UI components
+│       ├── hooks/          # Custom hooks
+│       └── view-models/    # View models for screens
+│
+├── shared/                 # Shared utilities and configurations
+│   ├── constants/         # App constants
+│   ├── i18n/              # Internationalization
+│   ├── theme/             # UI theme configuration
+│   └── utils/             # Utility functions
+│
+└── tests/            # Test files
+    └── unit/         # Unit tests\
+```
+
+## Architecture Overview
+
+### Expo Router Structure
+- `app/` directory handles all routing using file-based routing
+- `(tabs)/` directory manages tab navigation
+- Dynamic routes using `[param].tsx` files
+- Special files like `_layout.tsx` for layouts and `+not-found.tsx` for 404s
+
+### Domain Layer
+- Contains business entities (Character, Episode)
+- Defines repository interfaces
+- Implements use cases (GetCharacters, GetCharacterDetails, etc.)
+- Independent of any framework or external concerns
+
+### Data Layer
+- Implements repository interfaces
+- Handles GraphQL API integration
+- Manages data caching and persistence
+- Contains data models and DTOs
+
+### Presentation Layer
+- React Native components and screens
+- View models for state management
+- Integration with Expo Router
+- UI/UX implementation
+
+### Shared Layer
+- Common utilities and configurations
+- Internationalization
+- Theme management
+- Custom hooks
+
+## Features
+
+1. Character List (app/(tabs)/characters/index.tsx)
+   - Paginated list of characters
+   - Character details (photo, name, species)
+   - Filters (name, species, status)
+
+2. Character Detail (app/(tabs)/characters/[id].tsx)
+   - Comprehensive character information
+   - Episode appearances
+   - Location details
+
+3. Episode List (app/(tabs)/episodes/index.tsx)
+   - List of episodes with details
+   - Episode information
+   - Character appearances
+
+## Technical Stack
+
+- React Native (Expo)
+- Expo Router (File-based routing)
+- Apollo Client (GraphQL)
+- Jest & Testing Library
+- TypeScript
+- i18n-js (Internationalization)
+
+## Getting Started
+
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. Start the development server:
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+3. Run tests:
+   ```bash
+   npm test
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Testing Strategy
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Unit Tests: Core business logic and use cases
+- Component Tests: UI components and screens
+- Integration Tests: Repository implementations
+- E2E Tests: Critical user flows

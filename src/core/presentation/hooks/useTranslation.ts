@@ -1,7 +1,7 @@
-import i18n from '@/lib/i18n';
+import i18n from '@i18n/i18n';
 import { useCallback } from 'react';
 
-export function useTranslation() {
+export default function useTranslation() {
   const t = useCallback((key: string) => {
     return i18n.t(key);
   }, []);
@@ -15,4 +15,4 @@ export function useTranslation() {
     locale: i18n.locale,
     setLocale,
   };
-} 
+}

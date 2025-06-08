@@ -3,15 +3,24 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@core/*": ["./src/core/*"],
+      "@domain/*": ["./src/core/domain"],
+      "@data/*": ["./src/core/data"],
+      "@presentation/*": ["./src/core/presentation/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@entities/*": ["./src/core/domain/entities/*"],
+      "@repositories/*": ["./src/core/domain/repositories/*"],
+      "@use-cases/*": ["./src/core/domain/use-cases/*"],
+      "@graphql/*": ["./src/core/data/graphql/*"],
+      "@components/*": ["./src/core/presentation/components/*"],
+      "@hooks/*": ["./src/core/presentation/hooks/*"],
+      "@view-models/*": ["./src/core/presentation/view-models/*"],
+      "@utils/*": ["./src/shared/utils/*"],
+      "@constants/*": ["./src/shared/constants/*"],
+      "@i18n/*": ["./src/shared/i18n/*"],
+      "@theme/*": ["./src/shared/theme/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

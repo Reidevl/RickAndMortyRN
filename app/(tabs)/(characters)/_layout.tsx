@@ -1,4 +1,4 @@
-import { useTranslation } from "@/hooks/useTranslation";
+import useTranslation from "@hooks/useTranslation";
 import { Stack } from "expo-router";
 
 export default function CharactersLayout() {
