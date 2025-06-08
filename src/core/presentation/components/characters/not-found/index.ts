@@ -1,0 +1,1 @@
+export { NotFoundSearchResult } from "./NotFoundSearchResult";
