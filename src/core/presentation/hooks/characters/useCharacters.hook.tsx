@@ -5,6 +5,7 @@ import { CharacterRepositoryImpl } from "@data/repositories/CharacterRepositoryI
 import {
   Character,
   CharacterGender,
+  CharacterSpecies,
   CharacterStatus,
 } from "@entities/Character";
 
@@ -66,7 +67,9 @@ export function useCharacters() {
     []
   );
   const setSpecies = useCallback(
-    (species: string) => setFilters((f) => ({ ...f, species, page: 1 })),
+    (species: string) => setFilters((f) => ({ ...f, 
+      species: species === "All" ? undefined: (species as CharacterSpecies)
+      , page: 1 })),
     []
   );
   const setGender = useCallback(

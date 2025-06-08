@@ -19,6 +19,29 @@ const translations = {
       gender: "Gender",
       origin: "Origin",
       location: "Location",
+      noCharactersFound: "No characters found.",
+    },
+    filters: {
+      status: {
+        all: "All",
+        alive: "Alive",
+        dead: "Dead",
+        unknown: "Unknown",
+      },
+      gender: {
+        all: "All",
+        female: "Female",
+        male: "Male",
+        genderless: "Genderless",
+        unknown: "Unknown",
+      },
+      species: {
+        all: "All",
+        human: "Human",
+        alien: "Alien",
+        robot: "Robot",
+        unknown: "Unknown",
+      },
     },
     episodes: {
       title: "Episodes",
@@ -44,6 +67,29 @@ const translations = {
       gender: "Género",
       origin: "Origen",
       location: "Ubicación",
+      noCharactersFound: "No se encontraron personajes.",
+    },
+    filters: {
+      status: {
+        all: "Todos",
+        alive: "Vivo",
+        dead: "Muerto",
+        unknown: "Desconocido",
+      },
+      gender: {
+        all: "Todos",
+        female: "Femenino",
+        male: "Masculino",
+        genderless: "Sin género",
+        unknown: "Desconocido",
+      },
+      species: {
+        all: "Todos",
+        human: "Humano",
+        alien: "Alienígena",
+        robot: "Robot",
+        unknown: "Desconocido",
+      },
     },
     episodes: {
       title: "Episodios",

@@ -1,75 +1,119 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@components/HelloWave';
-import ParallaxScrollView from '@components/ParallaxScrollView';
-import { ThemedText } from '@components/ThemedText';
-import { ThemedView } from '@components/ThemedView';
+import React from "react";
+import { FlatList, View } from "react-native";
+// Hooks
+import { useCharacters } from "@hooks/characters";
+import { useThemeColor } from "@hooks/useThemeColor";
+import useTranslation from "@hooks/useTranslation";
+// Components
+import {
+  CharacterCard,
+  IconSymbol,
+  Loading,
+  NotFoundSearchResult,
+  SearchInput,
+  Selector,
+  ThemedView,
+} from "@components/index";
+// Styles
+import { styles } from "./styles";
 
 export default function CharactersScreen() {
+  const {
+    characters,
+    filters,
+    loading,
+    setName,
+    setStatus,
+    setSpecies,
+    setGender,
+    setPage,
+  } = useCharacters();
+  const { name, status, species, gender } = filters;
+  const { t } = useTranslation();
+  const iconColor = useThemeColor({}, "text");
+
+  const statusOptions = [
+    { label: t("filters.status.all"), value: "All" },
+    { label: t("filters.status.alive"), value: "Alive" },
+    { label: t("filters.status.dead"), value: "Dead" },
+    { label: t("filters.status.unknown"), value: "unknown" },
+  ];
+
+  const speciesOptions = [
+    { label: t("filters.species.all"), value: "All" },
+    { label: t("filters.species.human"), value: "Human" },
+    { label: t("filters.species.alien"), value: "Alien" },
+    { label: t("filters.species.robot"), value: "Robot" },
+    { label: t("filters.species.unknown"), value: "unknown" },
+  ];
+  const genderOptions = [
+    { label: t("filters.gender.all"), value: "All" },
+    { label: t("filters.gender.female"), value: "Female" },
+    { label: t("filters.gender.male"), value: "Male" },
+    { label: t("filters.gender.genderless"), value: "Genderless" },
+    { label: t("filters.gender.unknown"), value: "unknown" },
+  ];
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <ThemedView style={styles.container}>
+      <SearchInput
+        value={name || ""}
+        onChangeText={setName}
+        onSubmit={setName}
+        placeholder={t("characters.search")}
+      />
+      <View style={styles.filtersRow}>
+        <Selector
+          label={t("characters.status")}
+          value={status || ""}
+          options={statusOptions}
+          onSelect={setStatus}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <Selector
+          label={t("characters.species")}
+          value={species || ""}
+          options={speciesOptions}
+          onSelect={setSpecies}
+        />
+        <Selector
+          label={t("characters.gender")}
+          value={gender || ""}
+          options={genderOptions}
+          onSelect={setGender}
+        />
+      </View>
+      {/* Loading */}
+      {loading ? (
+        <Loading size="large" />
+      ) : characters.length === 0 ? (
+        // No characters found
+        <NotFoundSearchResult
+          message={t("characters.noCharactersFound")}
+          icon={
+            <IconSymbol
+              name="person.crop.circle.badge.xmark"
+              size={48}
+              color={iconColor}
+            />
+          }
+        />
+      ) : (
+        // Character list
+        <FlatList
+          data={characters}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <CharacterCard
+              name={item.name}
+              image={item.image}
+              species={item.species}
+            />
+          )}
+          contentContainerStyle={styles.grid}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
+    </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
