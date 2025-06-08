@@ -4,8 +4,8 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 // Apollo
-import { apolloClient } from '@/src/core/data/graphql/client';
 import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from '@graphql/client';
 // Hooks
 import { useColorScheme } from '@hooks/useColorScheme';
 
