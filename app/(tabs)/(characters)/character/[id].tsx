@@ -20,8 +20,9 @@ export default function CharacterPage() {
   const navigation = useNavigation();
 
   const { t } = useTranslation();
-  const iconColor = useThemeColor({}, "text");
   const { character, episodesBySeason, loading, error } = useCharacter(id);
+  
+  const iconColor = useThemeColor({}, "text");
 
   useLayoutEffect(() => {
     if (character?.name) {

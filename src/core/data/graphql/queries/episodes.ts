@@ -27,6 +27,14 @@ export const GET_EPISODE = gql`
     episode(id: $id) {
       id
       name
+      air_date
+      episode
+      characters {
+        id
+        name
+        image
+        species
+      }
     }
   }
 `;
