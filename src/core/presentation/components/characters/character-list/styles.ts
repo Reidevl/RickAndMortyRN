@@ -4,6 +4,9 @@ export const styles = StyleSheet.create({
   container: {
     paddingBottom: 24,
   },
+  characterCard: {
+    flex: 1,
+  },
   ios: {
     paddingBottom: 60,
   },

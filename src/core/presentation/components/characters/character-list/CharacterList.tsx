@@ -1,5 +1,6 @@
+import { Link } from "expo-router";
 import React from "react";
-import { FlatList, Platform } from "react-native";
+import { FlatList, Platform, Pressable } from "react-native";
 // Components
 import { Paginator } from "../../paginator/Paginator";
 import { CharacterCard } from "../character-card";
@@ -27,23 +28,32 @@ export const CharacterList = ({
       keyExtractor={(item) => item.id.toString()}
       numColumns={2}
       renderItem={({ item }) => (
-        <CharacterCard
-          name={item.name}
-          image={item.image}
-          species={item.species}
-        />
+        <Link
+          asChild
+          href={{
+            pathname: "/character/[id]",
+            params: { id: item.id.toString(), name: item.name },
+          }}
+        >
+          <Pressable style={styles.characterCard}>
+            <CharacterCard
+              name={item.name}
+              image={item.image}
+              species={item.species}
+            />
+          </Pressable>
+        </Link>
       )}
       ListFooterComponent={() => (
         <Paginator
           page={page}
           totalPages={totalPages}
           onPageChange={onPageChange}
-          />
-        )
-    }
+        />
+      )}
       contentContainerStyle={styles.container}
       ListFooterComponentStyle={
-          Platform.OS === "ios" ? styles.ios : styles.android
+        Platform.OS === "ios" ? styles.ios : styles.android
       }
       showsVerticalScrollIndicator={false}
     />

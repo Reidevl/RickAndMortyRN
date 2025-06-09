@@ -10,12 +10,15 @@ export default function CharactersLayout() {
         name="index"
         options={{
           title: t("tabs.characters"),
+          headerBackTitle: "",
         }}
       />
       <Stack.Screen
         name="character/[id]"
         options={{
-          title: "Character", //TODO: Add character name
+          title: "",
+          headerBackTitle: "",
+          headerBackButtonDisplayMode: "minimal",
         }}
       />
     </Stack>
