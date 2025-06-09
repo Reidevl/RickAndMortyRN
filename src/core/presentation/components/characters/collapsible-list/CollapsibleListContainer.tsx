@@ -3,7 +3,8 @@ import { View } from "react-native";
 // Hooks
 import useTranslation from "@hooks/useTranslation";
 // Components
-import { Collapsible, ThemedText } from "@components/index";
+import { Collapsible } from "@components/Collapsible";
+import { ThemedText } from "@components/ThemedText";
 import { Episode } from "@entities/Character";
 // Styles
 import { styles } from "./styles";

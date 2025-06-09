@@ -27,7 +27,6 @@ export const useCharacter = (id: string | number | undefined) => {
     if (!character?.episode) return {};
     return character.episode.reduce(
       (acc: Record<string, typeof character.episode>, ep) => {
-        // Example: "S01E01" => "Season 1"
         const match = ep.episode.match(/S(\d+)E\d+/);
         const season = match ? `Season ${parseInt(match[1], 10)}` : "Other";
         if (!acc[season]) acc[season] = [];

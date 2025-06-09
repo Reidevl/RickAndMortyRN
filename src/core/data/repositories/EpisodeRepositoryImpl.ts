@@ -7,8 +7,8 @@ import {
   EpisodeVariables,
 } from "@graphql/types/episodes";
 // Domain
-import { Episode, EpisodeFilters } from "../../domain/entities/Episode";
-import { EpisodeRepository } from "../../domain/repositories/EpisodeRepository";
+import { Episode, EpisodeFilters } from "@domain/entities/Episode";
+import { EpisodeRepository } from "@repositories/EpisodeRepository";
 
 export class EpisodeRepositoryImpl implements EpisodeRepository {
   async getEpisodes(

@@ -5,7 +5,7 @@ import { Character } from "@/src/core/domain/entities/Character";
 // Hooks
 import useTranslation from "@hooks/useTranslation";
 // Components
-import { ThemedText } from "@components/index";
+import { ThemedText } from "@components/ThemedText";
 // Styles
 import { getStatusColor } from "@utils/index";
 import { styles } from "./styles";

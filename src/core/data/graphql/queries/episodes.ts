@@ -7,6 +7,17 @@ export const GET_EPISODES = gql`
         pages
         count
       }
+      results {
+        id
+        name
+        air_date
+        episode
+        characters {
+          id
+          name
+        }
+        created
+      }
     }
   }
 `;

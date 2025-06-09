@@ -56,6 +56,8 @@ const translations = {
       search: "Search episodes...",
       airDate: "Air Date",
       episode: "Episode",
+      error: "Error loading episodes.",
+      noEpisodesFound: "No episodes found.",
     },
   },
   es: {
@@ -112,6 +114,8 @@ const translations = {
       search: "Buscar episodios...",
       airDate: "Fecha de emisión",
       episode: "Episodio",
+      error: "Error al cargar los episodios.",
+      noEpisodesFound: "No se encontraron episodios.",
     },
   },
 };

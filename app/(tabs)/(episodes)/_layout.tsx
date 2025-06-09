@@ -10,12 +10,15 @@ export default function EpisodesLayout() {
         name="index"
         options={{
           title: t("tabs.episodes"),
+          headerBackTitle: "",
         }}
       />
       <Stack.Screen
         name="episode/[id]"
         options={{
-          title: "Episode", //TODO: Add episode name
+          title: "",
+          headerBackTitle: "",
+          headerBackButtonDisplayMode: "minimal",
         }}
       />
     </Stack>

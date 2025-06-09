@@ -1,4 +1,5 @@
 export * from "./characters";
+export * from "./episodes";
 export * from "./loading";
 export * from "./paginator";
 export * from "./Selector";

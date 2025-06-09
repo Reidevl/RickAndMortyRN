@@ -4,11 +4,11 @@ import { styles } from "./styles";
 // Hooks
 import { useThemeColor } from "@hooks/useThemeColor";
 
-interface LoadingProps {
+interface Props {
   size?: "small" | "large";
 }
 
-export const Loading: React.FC<LoadingProps> = ({ size = "large" }) => {
+export const Loading = ({ size = "large" }: Props) => {
   const color = useThemeColor({}, "text");
 
   return (
