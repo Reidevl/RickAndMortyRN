@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { EpisodeRepositoryImpl } from "@data/repositories/EpisodeRepositoryImpl";
 // Entities
 import { Episode } from "@entities/Episode";
+// Use-case
+import { GetEpisodeUseCase } from "@domain/use-cases/GetEpisodeUseCase";
 
 const episodeRepository = new EpisodeRepositoryImpl();
+const getEpisodeUseCase = new GetEpisodeUseCase(episodeRepository);
 
 export const useEpisode = (id: string | number | undefined) => {
   const [episode, setEpisode] = useState<Episode | null>(null);
@@ -16,8 +19,8 @@ export const useEpisode = (id: string | number | undefined) => {
     setLoading(true);
     setError(null);
 
-    episodeRepository
-      .getEpisodeById(String(id))
+    getEpisodeUseCase
+      .execute(String(id))
       .then(setEpisode)
       .catch((err) => setError(err as Error))
       .finally(() => setLoading(false));

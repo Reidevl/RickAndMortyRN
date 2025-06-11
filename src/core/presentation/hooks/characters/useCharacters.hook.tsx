@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 // Data
 import { CharacterRepositoryImpl } from "@data/repositories/CharacterRepositoryImpl";
+// Use-case
+import { GetCharactersUseCase } from "@domain/use-cases/GetCharactersUseCase";
 // Domain
 import {
   Character,
@@ -10,6 +12,7 @@ import {
 } from "@entities/Character";
 
 const characterRepository = new CharacterRepositoryImpl();
+const getCharactersUseCase = new GetCharactersUseCase(characterRepository);
 
 export function useCharacters() {
   const [filters, setFilters] = useState<{
@@ -30,7 +33,7 @@ export function useCharacters() {
     setLoading(true);
     setError(null);
     try {
-      const result = await characterRepository.getCharacters({
+      const result = await getCharactersUseCase.execute({
         name: filters.name,
         status: filters.status,
         species: filters.species,

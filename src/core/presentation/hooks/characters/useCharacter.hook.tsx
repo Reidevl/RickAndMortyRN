@@ -1,9 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 // Data
 import { CharacterRepositoryImpl } from "@data/repositories/CharacterRepositoryImpl";
+// Use-case
+import { GetCharacterUseCase } from "@domain/use-cases/GetCharacterUseCase";
+// Entities
 import { Character, Episode } from "@entities/Character";
 
 const characterRepository = new CharacterRepositoryImpl();
+const getCharacterUseCase = new GetCharacterUseCase(characterRepository);
 
 export const useCharacter = (id: string | number | undefined) => {
   const [character, setCharacter] = useState<Character | null>(null);
@@ -15,8 +19,8 @@ export const useCharacter = (id: string | number | undefined) => {
     setLoading(true);
     setError(null);
 
-    characterRepository
-      .getCharacterById(String(id))
+    getCharacterUseCase
+      .execute(String(id))
       .then(setCharacter)
       .catch((err) => setError(err as Error))
       .finally(() => setLoading(false));

@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 // Data
 import { EpisodeRepositoryImpl } from "@data/repositories/EpisodeRepositoryImpl";
+// Use-case
+import { GetEpisodesUseCase } from "@domain/use-cases/GetEpisodesUseCase";
 // Entities
 import { Episode } from "@entities/Episode";
 
 const episodeRepository = new EpisodeRepositoryImpl();
+const getEpisodesUseCase = new GetEpisodesUseCase(episodeRepository);
 
 export function useEpisodes() {
   const [filters, setFilters] = useState<{
@@ -18,8 +21,8 @@ export function useEpisodes() {
 
   const fetchEpisodes = useCallback(async () => {
     setLoading(true);
-    episodeRepository
-      .getEpisodes({
+    getEpisodesUseCase
+      .execute({
         name: filters.name,
         page: filters.page,
       })
