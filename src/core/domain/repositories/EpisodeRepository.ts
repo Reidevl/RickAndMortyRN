@@ -17,11 +17,4 @@ export interface EpisodeRepository {
    * @returns Episode
    */
   getEpisodeById(id: string): Promise<Episode>;
-
-  /**
-   * Get episodes by ids
-   * @param ids - Episode ids
-   * @returns Episodes
-   */
-  getEpisodesByIds(ids: string[]): Promise<Episode[]>;
 } 

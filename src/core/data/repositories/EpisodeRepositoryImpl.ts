@@ -45,11 +45,4 @@ export class EpisodeRepositoryImpl implements EpisodeRepository {
 
     return data.episode;
   }
-
-  async getEpisodesByIds(ids: string[]): Promise<Episode[]> {
-    const episodes = await Promise.all(
-      ids.map((id) => this.getEpisodeById(id))
-    );
-    return episodes;
-  }
 }

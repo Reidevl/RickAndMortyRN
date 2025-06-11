@@ -4,7 +4,7 @@ import {
   CharacterResponse,
   CharactersResponse,
   CharactersVariables,
-  CharacterVariables
+  CharacterVariables,
 } from "@graphql/types/characters";
 // Domain
 import { CharacterFilters } from "@entities/Character";
@@ -12,7 +12,10 @@ import { CharacterRepository } from "@repositories/CharacterRepository";
 
 export class CharacterRepositoryImpl implements CharacterRepository {
   async getCharacters(filters?: CharacterFilters) {
-    const { data } = await apolloClient.query<CharactersResponse, CharactersVariables>({
+    const { data } = await apolloClient.query<
+      CharactersResponse,
+      CharactersVariables
+    >({
       query: GET_CHARACTERS,
       variables: {
         page: filters?.page || 1,
@@ -32,18 +35,14 @@ export class CharacterRepositoryImpl implements CharacterRepository {
   }
 
   async getCharacterById(id: string) {
-    const { data } = await apolloClient.query<CharacterResponse, CharacterVariables>({
+    const { data } = await apolloClient.query<
+      CharacterResponse,
+      CharacterVariables
+    >({
       query: GET_CHARACTER,
       variables: { id },
     });
 
     return data.character;
-  }
-
-  async getCharactersByIds(ids: string[]) {
-    const characters = await Promise.all(
-      ids.map((id) => this.getCharacterById(id))
-    );
-    return characters;
   }
 }

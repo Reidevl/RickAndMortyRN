@@ -17,11 +17,4 @@ export interface CharacterRepository {
    * @returns Character
    */
   getCharacterById(id: string): Promise<Character>;
-
-  /**
-   * Get characters by ids
-   * @param ids - Character ids
-   * @returns Characters
-   */
-  getCharactersByIds(ids: string[]): Promise<Character[]>;
 } 
