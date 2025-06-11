@@ -19,6 +19,7 @@ module.exports = {
           "@use-cases": "./src/core/domain/use-cases",
           "@utils": "./src/shared/utils",
           "@view-models": "./src/core/presentation/view-models",
+          "@test": "./__test__",
         },
       },
     ],
