@@ -53,7 +53,7 @@ const translations = {
     },
     episodes: {
       title: "Episodes",
-      search: "Search episodes...",
+      search: "Search episodes by name...",
       airDate: "Air Date",
       episodeCharacters: "Episode characters",
       episodeCode: "Episode code",
@@ -113,7 +113,7 @@ const translations = {
     },
     episodes: {
       title: "Episodios",
-      search: "Buscar episodios...",
+      search: "Buscar episodios por nombre...",
       airDate: "Fecha de emisión",
       episodeCharacters: "Personajes del episodio",
       episodeCode: "Código del episodio",
@@ -126,10 +126,8 @@ const translations = {
 
 const i18n = new I18n(translations);
 
-// Set the locale once at the beginning of your app
 i18n.locale = getLocales()[0].languageCode ?? "es";
 
-// When a value is missing from a language it'll fallback to another language with the key present
 i18n.enableFallback = true;
 i18n.defaultLocale = "es";
 
