@@ -23,6 +23,9 @@ const MAPPING = {
   'backward.end.fill': 'first-page',
   'chevron.left': 'chevron-left',
   'forward.end.fill': 'last-page',
+  'location': 'location-on',
+  'calendar': 'calendar-month',
+
 } as IconMapping;
 
 

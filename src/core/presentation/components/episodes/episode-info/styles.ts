@@ -8,9 +8,20 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
   },
   episodeCode: {
-    marginBottom: 12,
+    // marginBottom: 12,
   },
   episodeCharacters: {
     marginBottom: 8,
+  },
+  infoContainer: {
+    marginBottom: 12,
+  },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  infoIcon: {
+    marginRight: 8,
   },
 });

@@ -5,6 +5,7 @@ import useTranslation from "@hooks/useTranslation";
 // Components
 import { Collapsible } from "@components/Collapsible";
 import { ThemedText } from "@components/ThemedText";
+// Entities
 import { Episode } from "@entities/Character";
 // Styles
 import { styles } from "./styles";
@@ -21,13 +22,15 @@ export const CollapsibleListContainer = ({ episodesBySeason }: Props) => {
         {t("episodes.title")}
       </ThemedText>
       {Object.entries(episodesBySeason).map(([season, episodes]) => (
-        <Collapsible key={season} title={season}>
-          {episodes.map((ep) => (
-            <ThemedText key={ep.id} style={styles.episodeItem}>
-              {ep.episode} - {ep.name}
-            </ThemedText>
-          ))}
-        </Collapsible>
+        <View key={season} style={styles.episodesSectionCollapsible}>
+          <Collapsible key={season} title={season}>
+            {episodes.map((ep) => (
+              <ThemedText key={ep.id} style={styles.episodeItem}>
+                {ep.episode} - {ep.name}
+              </ThemedText>
+            ))}
+          </Collapsible>
+        </View>
       ))}
     </View>
   );

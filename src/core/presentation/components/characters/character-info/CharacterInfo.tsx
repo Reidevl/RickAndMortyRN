@@ -6,6 +6,7 @@ import { Character } from "@/src/core/domain/entities/Character";
 import useTranslation from "@hooks/useTranslation";
 // Components
 import { ThemedText } from "@components/ThemedText";
+import { IconSymbol } from "@components/ui/IconSymbol";
 // Styles
 import { getStatusColor } from "@utils/index";
 import { styles } from "./styles";
@@ -21,29 +22,34 @@ export const CharacterInfo = ({ character }: Props) => {
       <ThemedText type="title" style={styles.name}>
         {character.name}
       </ThemedText>
-      <ThemedText>
-        <Text style={styles.label}>{t("characters.status")}: </Text>
-        <Text
-          style={{
-            color: getStatusColor(character.status),
-          }}
-        >
-          ●
-        </Text>{" "}
-        {character.status}
-      </ThemedText>
-      <ThemedText>
-        <Text style={styles.label}>{t("characters.species")}: </Text>
-        {character.species}
-      </ThemedText>
-      <ThemedText>
-        <Text style={styles.label}>{t("characters.gender")}: </Text>
-        {character.gender}
-      </ThemedText>
-      <ThemedText>
-        <Text style={styles.label}>{t("characters.location")}: </Text>
-        {character.location?.name}
-      </ThemedText>
+      <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}>
+        <IconSymbol name="person.2" size={20} color={getStatusColor(character.status)} style={{ marginRight: 8 }} />
+        <ThemedText>
+          <Text style={styles.label}>{t("characters.status")}: </Text>
+          <Text style={{ color: getStatusColor(character.status) }}>●</Text> {character.status}
+        </ThemedText>
+      </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}>
+        <IconSymbol name="list.bullet" size={20} color="#888" style={{ marginRight: 8 }} />
+        <ThemedText>
+          <Text style={styles.label}>{t("characters.species")}: </Text>
+          {character.species}
+        </ThemedText>
+      </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}>
+        <IconSymbol name={character.gender === 'Male' ? 'person.2' : character.gender === 'Female' ? 'person.2' : 'person.2'} size={20} color="#888" style={{ marginRight: 8 }} />
+        <ThemedText>
+          <Text style={styles.label}>{t("characters.gender")}: </Text>
+          {character.gender}
+        </ThemedText>
+      </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}>
+        <IconSymbol name="location" size={20} color="#888" style={{ marginRight: 8 }} />
+        <ThemedText>
+          <Text style={styles.label}>{t("characters.location")}: </Text>
+          {character.location?.name}
+        </ThemedText>
+      </View>
     </View>
   );
 };
