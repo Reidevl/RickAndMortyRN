@@ -18,7 +18,7 @@ interface Props {
 export const CharacterInfo = ({ character }: Props) => {
   const { t } = useTranslation();
   return (
-    <View style={styles.container}>
+    <View testID="character-info" style={styles.container}>
       <ThemedText type="title" style={styles.name}>
         {character.name}
       </ThemedText>
@@ -37,7 +37,7 @@ export const CharacterInfo = ({ character }: Props) => {
         </ThemedText>
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}>
-        <IconSymbol name={character.gender === 'Male' ? 'person.2' : character.gender === 'Female' ? 'person.2' : 'person.2'} size={20} color="#888" style={{ marginRight: 8 }} />
+        <IconSymbol name="person.2" size={20} color="#888" style={{ marginRight: 8 }} />
         <ThemedText>
           <Text style={styles.label}>{t("characters.gender")}: </Text>
           {character.gender}
