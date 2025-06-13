@@ -39,6 +39,7 @@ export function Selector<T extends string>({
   return (
     <>
       <TouchableOpacity
+        testID="selector"
         style={[styles.button, { backgroundColor }]}
         onPress={() => setVisible(true)}
         activeOpacity={0.8}
@@ -73,6 +74,7 @@ export function Selector<T extends string>({
               keyExtractor={(item) => item.value}
               renderItem={({ item }) => (
                 <TouchableOpacity
+                  testID="selector-option"
                   style={styles.option}
                   onPress={() => handleSelect(item.value)}
                   accessibilityRole="button"
