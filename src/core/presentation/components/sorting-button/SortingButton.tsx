@@ -34,6 +34,7 @@ export const SortingButton = ({ sort, setSort }: Props) => {
 
   return (
     <Pressable
+      testID="sorting-button"
       style={[styles.sortButton, { backgroundColor: buttonBackground }]}
       onPress={() => setSort(getNextSort(sort))}
     >
