@@ -31,6 +31,7 @@ export const EpisodeRow = ({ episode }: Props) => {
 
   return (
     <View
+      testID="episode-row"
       style={[
         styles.container,
         {

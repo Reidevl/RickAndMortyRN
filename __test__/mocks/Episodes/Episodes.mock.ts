@@ -1,4 +1,4 @@
-import { Episode } from "@/src/core/domain/entities/Episode";
+import { Episode } from "@entities/Episode";
 import { characterMock1, characterMock2 } from "../Characters/Character.mock";
 
 export const episodeMock1: Episode = {

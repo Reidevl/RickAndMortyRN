@@ -16,7 +16,7 @@ interface Props {
 export const EpisodeInfo = ({ episode }: Props) => {
   const { t } = useTranslation();
   return (
-    <View>
+    <View testID="episode-info">
       <ThemedText type="title" style={styles.title}>
         {episode.name}
       </ThemedText>
