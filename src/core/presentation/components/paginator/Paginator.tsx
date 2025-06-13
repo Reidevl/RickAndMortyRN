@@ -28,8 +28,9 @@ export const Paginator = ({ page, totalPages, onPageChange }: Props) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View testID="paginator" style={styles.container}>
       <TouchableOpacity
+        testID="paginator-backward"
         style={[styles.button, { backgroundColor }]}
         onPress={() => onPageChange(1)}
         disabled={page === 1}
@@ -41,6 +42,7 @@ export const Paginator = ({ page, totalPages, onPageChange }: Props) => {
         />
       </TouchableOpacity>
       <TouchableOpacity
+        testID="paginator-left"
         style={[styles.button, { backgroundColor }]}
         onPress={() => onPageChange(page - 1)}
         disabled={page === 1}
@@ -51,6 +53,7 @@ export const Paginator = ({ page, totalPages, onPageChange }: Props) => {
         {page} / {totalPages}
       </Text>
       <TouchableOpacity
+        testID="paginator-right"
         style={[styles.button, { backgroundColor }]}
         onPress={() => onPageChange(page + 1)}
         disabled={page === totalPages}
@@ -58,6 +61,7 @@ export const Paginator = ({ page, totalPages, onPageChange }: Props) => {
         <IconSymbol name="chevron.right" size={16} color={buttonTextColor} />
       </TouchableOpacity>
       <TouchableOpacity
+        testID="paginator-forward"
         style={[styles.button, { backgroundColor }]}
         onPress={() => onPageChange(totalPages)}
         disabled={page === totalPages}
