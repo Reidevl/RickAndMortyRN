@@ -12,7 +12,7 @@ export const Loading = ({ size = "large" }: Props) => {
   const color = useThemeColor({}, "text");
 
   return (
-    <View style={styles.container}>
+    <View testID="loading" style={styles.container}>
       <ActivityIndicator size={size} color={color} />
     </View>
   );
