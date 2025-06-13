@@ -31,7 +31,7 @@ describe("useEpisodes", () => {
 
   it("should set name", async () => {
     const { result } = renderHook(() => useEpisodes());
-    act(() => {
+    await act(async () => {
       result.current.setName("Rick");
     });
     expect(result.current.filters.name).toBe("Rick");
@@ -39,7 +39,7 @@ describe("useEpisodes", () => {
 
   it("should set page", async () => {
     const { result } = renderHook(() => useEpisodes());
-    act(() => {
+    await act(async () => {
       result.current.setPage(2);
     });
     expect(result.current.filters.page).toBe(2);

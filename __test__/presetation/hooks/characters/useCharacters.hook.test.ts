@@ -148,7 +148,28 @@ describe("useCharacters", () => {
     ]);
   });
 
+  it("should sort characters by undefined", async () => {
+    jest
+      .spyOn(GetCharactersUseCase.prototype, "execute")
+      .mockResolvedValueOnce({
+        characters: [characterMock2, characterMock1, characterMock3],
+        totalPages: 1,
+      });
 
+    const { result } = renderHook(() => useCharacters());
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    act(() => {
+      result.current.setSort(undefined as any);
+    });
+
+    expect(result.current.characters.map((c) => c.name)).toEqual([
+      "Morty Smith",
+      "Rick Sanchez",
+      "Charlie",
+    ]);
+  });
 
   it("should set filters with setName, setStatus, setSpecies, setGender, setPage", async () => {
     jest.spyOn(GetCharactersUseCase.prototype, "execute").mockResolvedValue({
@@ -160,7 +181,7 @@ describe("useCharacters", () => {
 
     await waitFor(() => expect(result.current.loading).toBe(false));
 
-    act(() => {
+    await act(async () => {
       result.current.setName("Rick");
       result.current.setStatus("Alive");
       result.current.setSpecies("Human");
@@ -176,6 +197,28 @@ describe("useCharacters", () => {
       page: 2,
     });
   });
+
+  it("should reset filters with setStatus, setSpecies, setGender", async () => {
+    jest.spyOn(GetCharactersUseCase.prototype, "execute").mockResolvedValue({
+      characters: [characterMock2, characterMock1, characterMock3],
+      totalPages: 1,
+    });
+
+    const { result } = renderHook(() => useCharacters());
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    await act(async () => {
+      result.current.setStatus("All");
+      result.current.setSpecies("All");
+      result.current.setGender("All");
+    });
+
+    expect(result.current.filters.status).toBeUndefined();
+    expect(result.current.filters.species).toBeUndefined();
+    expect(result.current.filters.gender).toBeUndefined();
+    expect(result.current.filters.page).toBe(1);
+  }); 
 
   it("should refetch characters", async () => {
     const spy = jest
