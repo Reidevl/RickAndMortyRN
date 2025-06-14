@@ -6,7 +6,6 @@ import useTranslation from "@hooks/useTranslation";
 // Components
 import { HapticTab } from "@components/HapticTab";
 import { IconSymbol } from "@components/ui/IconSymbol";
-import TabBarBackground from "@components/ui/TabBarBackground";
 // Constanst
 import { Colors } from "@constants/Colors";
 
@@ -20,7 +19,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
         tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
+        tabBarBackground: undefined,
         tabBarStyle: Platform.select({
           ios: {
             position: "absolute",

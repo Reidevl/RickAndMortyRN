@@ -7,7 +7,6 @@ export * from "./sorting-button";
 export * from "./ui";
 
 export { Collapsible } from "./Collapsible";
-export { ExternalLink } from "./ExternalLink";
 export { FilterDropdown } from "./FilterDropdown";
 export { HapticTab } from "./HapticTab";
 export { HelloWave } from "./HelloWave";

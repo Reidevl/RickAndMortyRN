@@ -17,7 +17,7 @@ interface Props {
 export const CollapsibleListContainer = ({ episodesBySeason }: Props) => {
   const { t } = useTranslation();
   return (
-    <View style={styles.episodesSection}>
+    <View style={styles.episodesSection} testID="episodes-section">
       <ThemedText type="subtitle" style={styles.episodesTitle}>
         {t("episodes.title")}
       </ThemedText>
