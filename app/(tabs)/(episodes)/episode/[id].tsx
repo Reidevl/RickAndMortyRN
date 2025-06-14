@@ -36,7 +36,7 @@ export default function EpisodePage() {
   if (error || !episode)
     return (
       <NotFoundSearchResult
-        message={t("characters.characterError")}
+        message={t("episodes.error")}
         icon={
           <IconSymbol
             name="person.crop.circle.badge.xmark"

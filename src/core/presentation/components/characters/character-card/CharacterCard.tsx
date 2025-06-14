@@ -1,19 +1,19 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, View, ViewProps } from "react-native";
 // Components
 import { ThemedText } from "@components/ThemedText";
 import { Colors } from "@constants/Colors";
 // Styles
 import { styles } from "./styles";
 
-interface Props {
+interface Props extends ViewProps {
   name: string;
   image: string;
   species: string;
 }
 
-export const CharacterCard = ({ name, image, species }: Props) => (
-  <View style={styles.card}>
+export const CharacterCard = ({ name, image, species, ...props }: Props) => (
+  <View style={styles.card} {...props}>
     <Image source={{ uri: image }} style={styles.image} />
     <ThemedText
       type="defaultSemiBold"
