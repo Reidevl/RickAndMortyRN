@@ -52,6 +52,7 @@ export default function CharacterPage() {
     <ParallaxScrollView
       headerImage={
         <Image
+          testID="header-image"
           source={{ uri: character.image }}
           style={styles.headerImage}
           resizeMode="cover"
@@ -60,7 +61,7 @@ export default function CharacterPage() {
       headerBackgroundColor={{ light: "#e5e7eb", dark: "#22272e" }}
     >
       {/* Character info */}
-      <CharacterInfo character={character} />
+      <CharacterInfo testID="character-info" character={character} />
       {/* Episodes */}
       <CollapsibleListContainer episodesBySeason={episodesBySeason} />
     </ParallaxScrollView>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ViewProps } from "react-native";
 // Data
 import { Character } from "@/src/core/domain/entities/Character";
 // Hooks
@@ -11,14 +11,14 @@ import { IconSymbol } from "@components/ui/IconSymbol";
 import { getStatusColor } from "@utils/index";
 import { styles } from "./styles";
 
-interface Props {
+interface Props extends ViewProps {
   character: Character;
 }
 
-export const CharacterInfo = ({ character }: Props) => {
+export const CharacterInfo = ({ character, ...props }: Props) => {
   const { t } = useTranslation();
   return (
-    <View testID="character-info" style={styles.container}>
+    <View testID="character-info" style={styles.container} {...props}>
       <ThemedText type="title" style={styles.name}>
         {character.name}
       </ThemedText>
