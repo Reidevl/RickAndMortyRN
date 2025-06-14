@@ -25,13 +25,12 @@ src/                     # Application source code
 │   │
 │   ├── data/          # Data layer
 │   │   ├── graphql/        # GraphQL queries, mutations, and types
-│   │   ├── repositories/   # Repository implementations
-│   │   └── sources/        # Data sources (API clients)
+│   │   └── repositories/   # Repository implementations
 │   │
 │   └── presentation/       # Presentation layer
 │       ├── components/     # Reusable UI components
-│       ├── hooks/          # Custom hooks
-│       └── view-models/    # View models for screens
+│       ├── styles/         # Styles for pages' view
+│       └── hooks/          # Custom hooks
 │
 ├── shared/                 # Shared utilities and configurations
 │   ├── constants/         # App constants
@@ -80,7 +79,7 @@ src/                     # Application source code
 1. Character List (app/(tabs)/characters/index.tsx)
    - Paginated list of characters
    - Character details (photo, name, species)
-   - Filters (name, species, status)
+   - Filters (name, species, gender, status)
 
 2. Character Detail (app/(tabs)/characters/[id].tsx)
    - Comprehensive character information
