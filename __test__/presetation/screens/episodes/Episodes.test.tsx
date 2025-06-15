@@ -25,10 +25,6 @@ jest.mock("@hooks/episodes/useEpisodes.hook", () => ({
   useEpisodes: jest.fn(),
 }));
 
-jest.mock("@hooks/useThemeColor", () => ({
-  useThemeColor: jest.fn(() => "#000"),
-}));
-
 jest.doMock("@components/index", () => ({
   __esModule: true,
   ThemedView: ({ children }: any) => <>{children}</>,

@@ -45,10 +45,6 @@ jest.mock("@hooks/useTranslation", () => ({
   }),
 }));
 
-jest.mock("@hooks/useThemeColor", () => ({
-  useThemeColor: jest.fn(() => "#000"),
-}));
-
 jest.mock("@hooks/episodes/useEpisode.hook", () => ({
   useEpisode: jest.fn(),
 }));
